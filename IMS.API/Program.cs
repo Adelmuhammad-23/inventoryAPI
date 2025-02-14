@@ -1,3 +1,4 @@
+using IMS.Infrastructure;
 using IMS.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,11 @@ var ConnectionString = builder.Configuration.GetConnectionString("DefultConnecti
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(ConnectionString)
 );
+#endregion
+
+
+#region DependencyInjection Settings
+builder.Services.AddInfrastructureDependencis();
 #endregion
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
