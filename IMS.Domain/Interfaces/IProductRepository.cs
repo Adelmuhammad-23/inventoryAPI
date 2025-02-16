@@ -1,6 +1,10 @@
-﻿namespace IMS.Domain.Interfaces
+﻿using IMS.Domain.Entities;
+using IMS.Domain.Generic;
+
+namespace IMS.Domain.Interfaces
 {
-    public interface IProductRepository
+    public interface IProductRepository : IGenaricRepository<Product>
     {
+        Task<Product> GetProductAsync(int id);
     }
 }
