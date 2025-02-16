@@ -21,7 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IMS.Application\IMS.Application.csproj" />
     <ProjectReference Include="..\IMS.Infrastructure\IMS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+    <Folder Include="Configurations\" />
   </ItemGroup>
 
 </Project>

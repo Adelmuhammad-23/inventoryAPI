@@ -24,4 +24,9 @@
     <ProjectReference Include="..\IMS.Domain\IMS.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExternalServices\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+
 </Project>
