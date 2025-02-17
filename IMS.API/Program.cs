@@ -1,3 +1,4 @@
+using IMS.Application;
 using IMS.Application.Services;
 using IMS.Infrastructure;
 using IMS.Infrastructure.DbContext;
@@ -17,6 +18,8 @@ option.UseSqlServer(ConnectionString)
 
 #region DependencyInjection Settings
 builder.Services.AddInfrastructureDependencis();
+builder.Services.AddApplicationDependencis();
+
 builder.Services.AddTransient<ProductsServices>();
 #endregion
 builder.Services.AddControllers();
