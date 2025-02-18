@@ -30,5 +30,13 @@ namespace IMS.Application.Services
 
             return productMapping;
         }
+        public async Task<ProductDTO> DeleteProductAsync(int id)
+        {
+            var product = await _productRepository.DeleteAsync(id);
+            if (product == null)
+                return null;
+            var productMapping = _mapper.Map<ProductDTO>(product);
+            return productMapping;
+        }
     }
 }

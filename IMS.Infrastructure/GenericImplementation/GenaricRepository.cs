@@ -47,6 +47,7 @@ namespace IMS.Infrastructure.GenericImplementation
         {
             var element = await GetByIdAsync(id);
             _context.Remove(element);
+            await _context.SaveChangesAsync();
             return element;
         }
 
