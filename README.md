@@ -51,7 +51,7 @@ The system provides **detailed insights** into inventory and sales performance, 
 ---
 
 ## 🌍 System Architecture (Onion Architecture)  
-📌 **Presentation Layer** → ASP.NET Core MVC (User Interface)  
+📌 **API Layer** → ASP.NET Core API (Controllers)  
 📌 **Application Layer** → Business Logic & Service Interfaces  
 📌 **Domain Layer** → Core Entities & Business Rules  
 📌 **Infrastructure Layer** → Database Management, Email Service, External APIs  
