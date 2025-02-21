@@ -6,11 +6,9 @@ namespace IMS.Application.Mapping.ProductMapping
     public partial class ProductMappingProfile
     {
 
-        public void GetProductDetailsMapping()
+        public void AddProductCommandMapping()
         {
-            CreateMap<Product, ProductDTO>()
-                .ForMember(dest => dest.CategoryName, src => src.MapFrom(cn => cn.Category.Name));
+            CreateMap<AddProductDTO, Product>();
         }
-
     }
 }

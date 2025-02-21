@@ -14,10 +14,6 @@ namespace IMS.Infrastructure.Repositories
             _products = context.Set<Product>();
         }
 
-        public async Task<Product> GetProductAsync(int id)
-        {
-            var product = await _products.AsNoTracking().Include(c => c.Category).Where(x => x.Id == id).FirstOrDefaultAsync();
-            return product;
-        }
+
     }
 }

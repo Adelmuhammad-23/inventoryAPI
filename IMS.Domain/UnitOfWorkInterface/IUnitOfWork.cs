@@ -6,6 +6,6 @@ namespace IMS.Domain.UnitOfWorkInterface
     public interface IUnitOfWork : IDisposable
     {
         IGenaricRepository<Product> Products { get; }
-        int Complete();
+        Task<int> Complete();
     }
 }

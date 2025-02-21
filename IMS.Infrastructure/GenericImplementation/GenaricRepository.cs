@@ -37,24 +37,23 @@ namespace IMS.Infrastructure.GenericImplementation
             return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
         }
 
-        public async Task<T> AddSync(T obj)
+        public async Task<T> AddAsync(T obj)
         {
-            var entityEntry = await _context.AddAsync(obj);
+            var entityEntry = await _context.Set<T>().AddAsync(obj);
             return obj;
         }
 
         public async Task<T> DeleteAsync(int id)
         {
             var element = await GetByIdAsync(id);
-            _context.Remove(element);
+            _context.Set<T>().Remove(element);
             return element;
         }
 
-        public async Task<T> UpdatAsync(int id)
+        public async Task<T> UpdatAsync(T obj)
         {
-            var element = await GetByIdAsync(id);
-            _context.Update(element);
-            return element;
+            _context.Set<T>().Update(obj);
+            return obj;
         }
     }
 }
