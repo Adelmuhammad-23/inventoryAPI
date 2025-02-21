@@ -5,6 +5,5 @@ namespace IMS.Domain.Interfaces
 {
     public interface IProductRepository : IGenaricRepository<Product>
     {
-        Task<Product> GetProductAsync(int id);
     }
 }

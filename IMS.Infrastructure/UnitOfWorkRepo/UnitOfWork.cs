@@ -19,9 +19,9 @@ namespace IMS.Infrastructure.UnitOfWorkRepo
             Products = new GenaricRepository<Product>(_context);
         }
 
-        public int Complete()
+        public async Task<int> Complete()
         {
-            return _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()

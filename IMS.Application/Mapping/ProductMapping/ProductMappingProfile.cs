@@ -7,7 +7,8 @@ namespace IMS.Application.Mapping.ProductMapping
         public ProductMappingProfile()
         {
             GetProductDetailsMapping();
-
+            AddProductCommandMapping();
+            UpdateProductCommandMapping();
 
         }
     }
