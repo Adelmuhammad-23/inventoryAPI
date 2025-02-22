@@ -1,5 +1,6 @@
 ﻿using IMS.Application.DTOs.ProductDTOs;
 using IMS.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -14,7 +15,7 @@ namespace IMS.API.Controllers
         {
             _productServices = productServices;
         }
-
+        [Authorize(Roles = "User")] // Both User and Admin can access
         [HttpGet()]
         [SwaggerOperation(
             Summary = "Get product list",

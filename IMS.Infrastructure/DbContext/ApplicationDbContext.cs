@@ -8,13 +8,8 @@ namespace IMS.Infrastructure.DbContext
 {
     public class ApplicationDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public ApplicationDbContext()
-        {
-
-        }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+         : base(options) { }
 
         // Models in DataBase
         public DbSet<User> Users { get; set; }
@@ -23,5 +18,6 @@ namespace IMS.Infrastructure.DbContext
         public DbSet<Product> Products { get; set; }
         public DbSet<LowStockAlert> LowStockAlert { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshTokenas { get; set; }
     }
 }

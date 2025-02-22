@@ -7,7 +7,7 @@ namespace IMS.Infrastructure.GenericImplementation
 {
     public class GenaricRepository<T> : IGenaricRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
+        public readonly ApplicationDbContext _context;
         public GenaricRepository(ApplicationDbContext context)
         {
             _context = context;
@@ -54,6 +54,15 @@ namespace IMS.Infrastructure.GenericImplementation
         {
             _context.Set<T>().Update(obj);
             return obj;
+        }
+        public IQueryable<T> GetTableNoTracking()
+        {
+            return _context.Set<T>().AsNoTracking().AsQueryable();
+        }
+        public IQueryable<T> GetTableAsTracking()
+        {
+            return _context.Set<T>().AsQueryable();
+
         }
     }
 }

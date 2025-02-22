@@ -11,5 +11,9 @@ namespace IMS.Domain.Generic
         Task<T> AddAsync(T obj);
         Task<T> UpdatAsync(T obj);
         Task<T> DeleteAsync(int id);
+        public IQueryable<T> GetTableAsTracking();
+        public IQueryable<T> GetTableNoTracking();
+
+
     }
 }
