@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IMS.Domain\IMS.Domain.csproj" />
     <ProjectReference Include="..\IMS.Infrastructure\IMS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Validators\" />
   </ItemGroup>
 
 </Project>

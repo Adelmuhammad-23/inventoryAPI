@@ -1,7 +1,14 @@
 using IMS.Application;
 using IMS.Application.Services;
+using IMS.Domain.Interfaces;
 using IMS.Infrastructure;
 using IMS.Infrastructure.DbContext;
+using IMS.Infrastructure.ExternalServices;
+using IMS.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,11 +21,29 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(ConnectionString)
 );
 #endregion
-
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+});
 
 #region DependencyInjection Settings
 builder.Services.AddInfrastructureDependencis();
-builder.Services.AddApplicationDependencis();
+builder.Services.AddApplicationDependencis().AddServiceRegistration(builder.Configuration);
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddTransient<IUserRefreshTokenRepository, UserRefreshTokenRepository>();
+builder.Services.AddScoped<EmailService>();
+
+//For Request info
+builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+builder.Services.AddTransient<IUrlHelper>(x =>
+{
+    var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
+    var factory = x.GetRequiredService<IUrlHelperFactory>();
+    return factory.GetUrlHelper(actionContext);
+});
+
 
 builder.Services.AddTransient<ProductsServices>();
 #endregion
@@ -38,8 +63,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
