@@ -6,6 +6,7 @@ using IMS.Infrastructure.DbContext;
 using IMS.Infrastructure.ExternalServices;
 using IMS.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -21,6 +22,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(ConnectionString)
 );
 #endregion
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 204857600; // ÍÌã ÇáãáÝ ÇáãÓãæÍ Èå (100MB)
+});
+
+
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -12,6 +12,14 @@ namespace IMS.Domain.Entities
         public string TotalAmount { get; set; }
         public DateTime Date { get; set; }
         public int ProductId { get; set; }
+
+
+
+
+
+
+
+
         [ForeignKey("ProductId")]
         [InverseProperty("Transaction")]
         public virtual Product Product { get; set; }

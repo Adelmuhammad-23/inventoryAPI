@@ -5,5 +5,6 @@ namespace IMS.Domain.Interfaces
 {
     public interface IProductRepository : IGenaricRepository<Product>
     {
+
     }
 }
