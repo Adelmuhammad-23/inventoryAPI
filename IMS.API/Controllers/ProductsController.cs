@@ -2,6 +2,7 @@
 using IMS.Application.Services;
 using IMS.Domain.Entities;
 using IMS.Infrastructure.DbContext;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -21,6 +22,7 @@ namespace IMS.API.Controllers
             _context = context;
         }
         [Authorize(Roles = "User")]
+
         [HttpGet()]
         [SwaggerOperation(
             Summary = "Get product list",
