@@ -25,8 +25,9 @@ option.UseSqlServer(ConnectionString)
 
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.MultipartBodyLengthLimit = 204857600; // ÕÃ„ «·„·› «·„”„ÊÕ »Â (100MB)
+    options.MultipartBodyLengthLimit = 204857600; 
 });
+
 
 
 
