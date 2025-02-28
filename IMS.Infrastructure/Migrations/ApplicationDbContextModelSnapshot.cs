@@ -40,7 +40,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Identities.Role", b =>
@@ -181,7 +181,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRefreshTokenas");
+                    b.ToTable("UserRefreshTokenas", (string)null);
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.LowStockAlert", b =>
@@ -210,7 +210,7 @@ namespace IMS.Infrastructure.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("LowStockAlert");
+                    b.ToTable("LowStockAlert", (string)null);
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Payment", b =>
@@ -242,7 +242,7 @@ namespace IMS.Infrastructure.Migrations
                     b.HasIndex("TransactionId")
                         .IsUnique();
 
-                    b.ToTable("Payment");
+                    b.ToTable("Payment", (string)null);
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Product", b =>
@@ -284,7 +284,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Transaction", b =>
@@ -325,7 +325,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

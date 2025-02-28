@@ -12,6 +12,7 @@ namespace IMS.Infrastructure
         public static IServiceCollection AddInfrastructureDependencis(this IServiceCollection services)
         {
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ITransactionsRepository, TransactionsRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return services;

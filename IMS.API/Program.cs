@@ -27,7 +27,7 @@ option.UseSqlServer(ConnectionString)
 
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.MultipartBodyLengthLimit = 204857600; 
+    options.MultipartBodyLengthLimit = 204857600;
 });
 
 
@@ -58,6 +58,7 @@ builder.Services.AddTransient<IUrlHelper>(x =>
 
 
 builder.Services.AddTransient<ProductsServices>();
+builder.Services.AddTransient<TransactionsServices>();
 #endregion
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
