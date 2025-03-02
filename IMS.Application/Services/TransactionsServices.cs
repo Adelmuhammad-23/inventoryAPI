@@ -5,6 +5,7 @@ using IMS.Domain.Enums;
 using IMS.Domain.Interfaces;
 using IMS.Domain.UnitOfWorkInterface;
 
+
 namespace IMS.Application.Services
 {
     public class TransactionsServices
@@ -19,12 +20,14 @@ namespace IMS.Application.Services
             _unitOfWork = unitOfWork;
             _transactionsRepository = transactionsRepository;
             _productRepository = productRepository;
+
             _mapper = mapper;
         }
 
         public async Task<TransactiontDTO> GetTransactionsByIdAsync(int id)
         {
             var transaction = await _unitOfWork.TransactionUOF.GetByIdAsync(id);
+
             if (transaction is null)
                 return null;
             var transactionsMapping = _mapper.Map<TransactiontDTO>(transaction);
@@ -66,5 +69,6 @@ namespace IMS.Application.Services
 
             return model;
         }
+
     }
 }

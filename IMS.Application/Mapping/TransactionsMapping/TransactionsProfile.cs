@@ -9,6 +9,7 @@ namespace IMS.Application.Mapping.TransactionsMapping
             GetListTransactionsQueryMapping();
             GetTransactionByIdQueryMapping();
             AddTrasactionCommandMapping();
+
         }
     }
 }

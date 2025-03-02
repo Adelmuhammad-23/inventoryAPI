@@ -1,5 +1,6 @@
-﻿using IMS.Application.DTOs.TransactionsDTO;
+using IMS.Application.DTOs.TransactionsDTO;
 using IMS.Application.Services;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.API.Controllers
@@ -15,6 +16,7 @@ namespace IMS.API.Controllers
         {
             _transactionsServices = transactionsServices;
             _productsServices = productsServices;
+
         }
 
         [HttpGet("Sale")]
@@ -53,5 +55,6 @@ namespace IMS.API.Controllers
                 return BadRequest($"Not found transaction to added");
             return Ok(transactions);
         }
+
     }
 }
