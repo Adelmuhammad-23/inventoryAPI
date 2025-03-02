@@ -11,15 +11,18 @@ namespace IMS.Infrastructure.UnitOfWorkRepo
     {
         private readonly ApplicationDbContext _context;
 
-        public IGenaricRepository<Product> Products { get; private set; }
+        public IGenaricRepository<Product> ProductsUOF { get; private set; }
+        public IGenaricRepository<Transaction> TransactionUOF { get; private set; }
         IAuthenticationRepository AuthenticationUOF { get; }
         IUserRefreshTokenRepository UserRefreshTokenRepositoryUOF { get; }
         IUserRepository UserRepositoryUOF { get; }
 
+
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            Products = new GenaricRepository<Product>(_context);
+            ProductsUOF = new GenaricRepository<Product>(_context);
+            TransactionUOF = new GenaricRepository<Transaction>(_context);
         }
 
         public async Task<int> Complete()

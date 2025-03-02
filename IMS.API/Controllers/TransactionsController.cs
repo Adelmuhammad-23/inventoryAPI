@@ -1,4 +1,5 @@
-﻿using IMS.Application.Services;
+﻿using IMS.Application.DTOs.TransactionsDTO;
+using IMS.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.API.Controllers
@@ -8,10 +9,12 @@ namespace IMS.API.Controllers
     public class TransactionsController : ControllerBase
     {
         private readonly TransactionsServices _transactionsServices;
+        private readonly ProductsServices _productsServices;
 
-        public TransactionsController(TransactionsServices transactionsServices)
+        public TransactionsController(TransactionsServices transactionsServices, ProductsServices productsServices)
         {
             _transactionsServices = transactionsServices;
+            _productsServices = productsServices;
         }
 
         [HttpGet("Sale")]
@@ -36,6 +39,18 @@ namespace IMS.API.Controllers
             var transactions = await _transactionsServices.GetTransactionsByIdAsync(id);
             if (transactions == null)
                 return NotFound($"Not found transaction with ID:{id}");
+            return Ok(transactions);
+        }
+        [HttpPost("record-transaction")]
+        public async Task<IActionResult> RecordTransaction([FromBody] AddTransactionDTO model)
+        {
+            var findProduct = await _productsServices.GetProductAsync(model.ProductId);
+            if (findProduct == null)
+                return NotFound($"Not found product with thiw id: {model.ProductId}");
+
+            var transactions = await _transactionsServices.AddTransactionsAsync(model);
+            if (transactions == null)
+                return BadRequest($"Not found transaction to added");
             return Ok(transactions);
         }
     }

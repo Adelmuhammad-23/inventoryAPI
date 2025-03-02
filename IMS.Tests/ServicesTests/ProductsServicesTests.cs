@@ -22,7 +22,7 @@ namespace IMS.Tests.ServicesTests
             _mockProductRepository = new Mock<IProductRepository>();
             _mockMapper = new Mock<IMapper>();
 
-            _mockUnitOfWork.Setup(u => u.Products).Returns(_mockProductRepository.Object);
+            _mockUnitOfWork.Setup(u => u.ProductsUOF).Returns(_mockProductRepository.Object);
 
             _productService = new ProductsServices(_mockUnitOfWork.Object, _mockProductRepository.Object, _mockMapper.Object);
         }
