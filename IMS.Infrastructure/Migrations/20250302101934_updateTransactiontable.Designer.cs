@@ -4,6 +4,7 @@ using IMS.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250302101934_updateTransactiontable")]
+    partial class updateTransactiontable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Identities.Role", b =>
@@ -180,7 +183,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRefreshTokenas", (string)null);
+                    b.ToTable("UserRefreshTokenas");
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.LowStockAlert", b =>
@@ -209,7 +212,7 @@ namespace IMS.Infrastructure.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("LowStockAlert", (string)null);
+                    b.ToTable("LowStockAlert");
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Payment", b =>
@@ -241,7 +244,7 @@ namespace IMS.Infrastructure.Migrations
                     b.HasIndex("TransactionId")
                         .IsUnique();
 
-                    b.ToTable("Payment", (string)null);
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Product", b =>
@@ -283,7 +286,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("IMS.Domain.Entities.Transaction", b =>
@@ -303,7 +306,7 @@ namespace IMS.Infrastructure.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalAmount")
+                    b.Property<int>("QuantityInStock")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -320,7 +323,7 @@ namespace IMS.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Transactions", (string)null);
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

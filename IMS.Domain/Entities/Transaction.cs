@@ -8,8 +8,7 @@ namespace IMS.Domain.Entities
         public int Id { get; set; }
         public string Type { get; set; }
         public int Quantity { get; set; }
-        public int QuantityInStock { get; set; }
-        public string TotalAmount { get; set; }
+        public int TotalAmount { get; set; }
         public DateTime Date { get; set; }
         public int ProductId { get; set; }
 
