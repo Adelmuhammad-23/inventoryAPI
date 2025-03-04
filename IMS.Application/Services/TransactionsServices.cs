@@ -7,6 +7,7 @@ using IMS.Domain.UnitOfWorkInterface;
 using IMS.Infrastructure.ExternalServices;
 
 
+
 namespace IMS.Application.Services
 {
     public class TransactionsServices
@@ -25,6 +26,7 @@ namespace IMS.Application.Services
             _transactionsRepository = transactionsRepository;
             _productRepository = productRepository;
             _lowStockAlerts = lowStockAlerts;
+
             _mapper = mapper;
         }
 
@@ -57,6 +59,7 @@ namespace IMS.Application.Services
             return transactionsMapping;
         }
         public async Task<string> AddTransactionsAsync(AddTransactionDTO model)
+
         {
             var product = await _unitOfWork.ProductsUOF.GetByIdAsync(model.ProductId);
             var transactionMapping = _mapper.Map<Transaction>(model);
@@ -90,6 +93,7 @@ namespace IMS.Application.Services
                 return "Error when add Transaction !.";
 
             return "Success";
+
         }
 
     }
