@@ -6,6 +6,7 @@ using IMS.Domain.Interfaces;
 using IMS.Domain.UnitOfWorkInterface;
 using IMS.Infrastructure.ExternalServices;
 
+
 namespace IMS.Application.Services
 {
     public class TransactionsServices
@@ -30,6 +31,7 @@ namespace IMS.Application.Services
         public async Task<TransactiontDTO> GetTransactionsByIdAsync(int id)
         {
             var transaction = await _unitOfWork.TransactionUOF.GetByIdAsync(id);
+
             if (transaction is null)
                 return null;
             var transactionsMapping = _mapper.Map<TransactiontDTO>(transaction);
@@ -89,5 +91,6 @@ namespace IMS.Application.Services
 
             return "Success";
         }
+
     }
 }
