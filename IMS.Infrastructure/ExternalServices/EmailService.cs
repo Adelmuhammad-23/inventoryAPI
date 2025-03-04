@@ -22,6 +22,9 @@ namespace IMS.Infrastructure.ExternalServices
             };
         }
 
+
+
+
         public async Task SendEmailAsync(string toEmail, string subject, string body)
         {
             try

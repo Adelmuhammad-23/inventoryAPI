@@ -21,7 +21,7 @@ namespace IMS.API.Controllers
             _productServices = productServices;
             _context = context;
         }
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
 
         [HttpGet()]
         [SwaggerOperation(
