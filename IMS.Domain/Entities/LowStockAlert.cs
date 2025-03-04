@@ -5,7 +5,7 @@ namespace IMS.Domain.Entities
     public class LowStockAlert
     {
         public int Id { get; set; }
-        public string Threshold { get; set; }
+        public int Threshold { get; set; }
         public bool AlertSent { get; set; }
         public DateTime Date { get; set; }
         public int ProductId { get; set; }

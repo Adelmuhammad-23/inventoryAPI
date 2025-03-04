@@ -13,6 +13,7 @@ namespace IMS.Infrastructure
         {
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ITransactionsRepository, TransactionsRepository>();
+            services.AddTransient<ILowStockAlerts, LowStockAlerts>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return services;

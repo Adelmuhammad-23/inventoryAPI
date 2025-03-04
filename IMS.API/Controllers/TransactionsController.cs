@@ -53,7 +53,8 @@ namespace IMS.API.Controllers
             var transactions = await _transactionsServices.AddTransactionsAsync(model);
             if (transactions == null)
                 return BadRequest($"Not found transaction to added");
-            return Ok(transactions);
+            return Ok("This transaction has been done ");
+
         }
 
     }
