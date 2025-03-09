@@ -13,6 +13,7 @@ namespace IMS.Infrastructure.UnitOfWorkRepo
 
         public IGenaricRepository<Product> ProductsUOF { get; private set; }
         public IGenaricRepository<Transaction> TransactionUOF { get; private set; }
+        public IGenaricRepository<Category> CategoryUOF { get; private set; }
         IAuthenticationRepository AuthenticationUOF { get; }
         IUserRefreshTokenRepository UserRefreshTokenRepositoryUOF { get; }
         IUserRepository UserRepositoryUOF { get; }
@@ -23,6 +24,7 @@ namespace IMS.Infrastructure.UnitOfWorkRepo
             _context = context;
             ProductsUOF = new GenaricRepository<Product>(_context);
             TransactionUOF = new GenaricRepository<Transaction>(_context);
+            CategoryUOF = new GenaricRepository<Category>(_context);
         }
 
         public async Task<int> Complete()
