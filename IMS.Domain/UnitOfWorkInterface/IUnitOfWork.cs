@@ -7,6 +7,7 @@ namespace IMS.Domain.UnitOfWorkInterface
     {
         IGenaricRepository<Product> ProductsUOF { get; }
         IGenaricRepository<Transaction> TransactionUOF { get; }
+        IGenaricRepository<Category> CategoryUOF { get; }
 
         Task<int> Complete();
     }

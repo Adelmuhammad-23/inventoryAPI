@@ -59,6 +59,7 @@ builder.Services.AddTransient<IUrlHelper>(x =>
 
 builder.Services.AddTransient<ProductsServices>();
 builder.Services.AddTransient<TransactionsServices>();
+builder.Services.AddTransient<CategoryServices>();
 #endregion
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
