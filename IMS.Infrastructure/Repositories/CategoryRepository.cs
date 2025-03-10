@@ -9,9 +9,11 @@ namespace IMS.Infrastructure.Repositories
     public class CategoryRepository : GenaricRepository<Category>, ICategoryRepository
     {
         private readonly DbSet<Category> _categories;
+
         public CategoryRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
             _categories = dbContext.Set<Category>();
         }
+
     }
 }

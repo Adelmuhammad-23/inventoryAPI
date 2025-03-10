@@ -28,20 +28,62 @@ namespace IMS.Application.Services
             return categoriesMapping;
 
         }
-        public async Task<AddCategoryDTO> GetCategoryByIdAsync(int id)
+        public async Task<GetCategoryByIdDTO> GetCategoryByIdAsync(int id)
         {
-            var categories = await _unitOfWork.CategoryUOF.GetByIdAsync(id);
+            var categories = await _unitOfWork.CategoryUOF.GetByIdAsync(id, p => p.Products);
             if (categories == null)
                 return null;
-            var categoriesMapping = _mapper.Map<AddCategoryDTO>(categories);
+
+
+            var categoriesMapping = _mapper.Map<GetCategoryByIdDTO>(categories);
+
 
             return categoriesMapping;
+
+        }
+        public async Task<string> AddProductToCategoryAsync(int categoryId, int productId)
+        {
+            var category = await _unitOfWork.CategoryUOF.GetByIdAsync(categoryId, p => p.Products);
+            if (category == null)
+                return null;
+
+            var product = await _unitOfWork.ProductsUOF.GetByIdAsync(productId);
+            if (product == null)
+                return null;
+
+
+            category.Products.Add(product);
+            await _unitOfWork.Complete();
+
+
+            return $"Add product with iD: {productId} in category with Id: {categoryId} is successfully";
+
+        }
+        public async Task<string> RemoveProductToCategoryAsync(int categoryId, int productId)
+        {
+            var category = await _unitOfWork.CategoryUOF.GetByIdAsync(categoryId, p => p.Products);
+            if (category == null)
+                return null;
+
+            var product = await _unitOfWork.ProductsUOF.GetByIdAsync(productId);
+            if (product == null)
+                return null;
+
+
+            category.Products.Remove(product);
+            await _unitOfWork.Complete();
+
+
+            return $"Remove product with iD: {productId} in category with Id: {categoryId} is successfully";
 
         }
         public async Task<AddCategoryDTO> AddCategoriesAsync(AddCategoryDTO addCategory)
         {
             var AddCategory = _mapper.Map<Category>(addCategory);
-            var addCategoryDB = await _categoryRepository.AddAsync(AddCategory);
+            var addCategoryDB = await _unitOfWork.CategoryUOF.AddAsync(AddCategory);
+            await _unitOfWork.Complete();
+
+
 
             return addCategory;
 
@@ -52,9 +94,12 @@ namespace IMS.Application.Services
             if (category == null)
                 return null;
 
-            var categoriesMapping = _mapper.Map<Category>(updateCategory);
+            var categoriesMapping = _mapper.Map(updateCategory, category);
 
             var categories = await _unitOfWork.CategoryUOF.UpdatAsync(categoriesMapping);
+            await _unitOfWork.Complete();
+
+
 
             return "Update category is successfully";
 
@@ -64,8 +109,12 @@ namespace IMS.Application.Services
             var category = await _unitOfWork.CategoryUOF.GetByIdAsync(id);
             if (category == null)
                 return null;
+            if (category.Products is not null)
+                return "Can't Delete this category because with many products !";
 
             var categories = await _unitOfWork.CategoryUOF.DeleteAsync(id);
+            await _unitOfWork.Complete();
+
 
             return "Delete category is successfully";
 
