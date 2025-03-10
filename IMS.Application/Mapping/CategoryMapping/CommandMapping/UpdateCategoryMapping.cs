@@ -8,8 +8,6 @@ namespace IMS.Application.Mapping.CategoryMapping
         public void UpdateCategoryMapping()
         {
             CreateMap<UpdateCategoryDTO, Category>();
-
-
         }
     }
 }

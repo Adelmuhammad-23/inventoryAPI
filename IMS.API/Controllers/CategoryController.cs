@@ -25,34 +25,54 @@ namespace IMS.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryByIdAsync([FromRoute] int id)
         {
-            var getCategories = await _categoryServices.GetCategoryByIdAsync(id);
-            if (getCategories == null)
+            var categoy = await _categoryServices.GetCategoryByIdAsync(id);
+            if (categoy == null)
                 return NotFound("Not found Categories yet");
-            return Ok(getCategories);
+            return Ok(categoy);
         }
         [HttpPost]
         public async Task<IActionResult> AddCategoriesAsync(AddCategoryDTO addCategoryDTO)
         {
-            var getCategories = await _categoryServices.AddCategoriesAsync(addCategoryDTO);
-            if (getCategories == null)
+            var addCategory = await _categoryServices.AddCategoriesAsync(addCategoryDTO);
+            if (addCategory == null)
                 return NotFound("Not found Categories yet");
-            return Ok(getCategories);
+
+            return Ok(addCategory);
         }
+        [HttpPost("Products")]
+        public async Task<IActionResult> AddProductToCategoryAsync(int categoyId, int productId)
+        {
+            var addProductToCategoryResult = await _categoryServices.AddProductToCategoryAsync(categoyId, productId);
+            if (addProductToCategoryResult == null)
+                return NotFound($"Not found Category or Product with ID's: {categoyId} & {productId}");
+
+            return Ok(addProductToCategoryResult);
+        }
+        [HttpDelete("Products")]
+        public async Task<IActionResult> RemoveProductToCategoryAsync(int categoyId, int productId)
+        {
+            var removeProductToCategoryResult = await _categoryServices.RemoveProductToCategoryAsync(categoyId, productId);
+            if (removeProductToCategoryResult == null)
+                return NotFound($"Not found Category or Product with ID's: {categoyId} & {productId}");
+
+            return Ok(removeProductToCategoryResult);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCategoriesAsync([FromRoute] int id, [FromBody] UpdateCategoryDTO updateCategory)
         {
-            var getCategories = await _categoryServices.UpdateCategoriesAsync(id, updateCategory);
-            if (getCategories == null)
+            var editCategory = await _categoryServices.UpdateCategoriesAsync(id, updateCategory);
+            if (editCategory == null)
                 return NotFound("Not found Categories yet");
-            return Ok(getCategories);
+            return Ok(editCategory);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategoriesAsync(int id)
         {
-            var getCategories = await _categoryServices.DeleteCategoriesAsync(id);
-            if (getCategories == null)
+            var deleteCategory = await _categoryServices.DeleteCategoriesAsync(id);
+            if (deleteCategory == null)
                 return NotFound("Not found Categories yet");
-            return Ok(getCategories);
+            return Ok(deleteCategory);
         }
     }
 }

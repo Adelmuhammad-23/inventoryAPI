@@ -7,6 +7,7 @@ namespace IMS.Application.Mapping.CategoryMapping
         public CategoryProfile()
         {
             CategoryListQueryMapping();
+            GetCategoryByIdMapping();
             AddCategoryMapping();
             UpdateCategoryMapping();
         }
