@@ -29,6 +29,7 @@ namespace IMS.API.Controllers
             if (categoy == null)
                 return NotFound("Not found Categories yet");
             return Ok(categoy);
+
         }
         [HttpPost]
         public async Task<IActionResult> AddCategoriesAsync(AddCategoryDTO addCategoryDTO)
@@ -65,6 +66,7 @@ namespace IMS.API.Controllers
             if (editCategory == null)
                 return NotFound("Not found Categories yet");
             return Ok(editCategory);
+
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategoriesAsync(int id)
@@ -73,6 +75,7 @@ namespace IMS.API.Controllers
             if (deleteCategory == null)
                 return NotFound("Not found Categories yet");
             return Ok(deleteCategory);
+
         }
     }
 }

@@ -15,6 +15,5 @@ namespace IMS.Infrastructure.Repositories
             _categories = dbContext.Set<Category>();
         }
 
-
     }
 }
