@@ -1,3 +1,4 @@
+using IMS.API.Middleware;
 using IMS.Application;
 using IMS.Application.Services;
 using IMS.Domain.Interfaces;
@@ -76,6 +77,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();
