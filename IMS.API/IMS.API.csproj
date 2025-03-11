@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Middleware\" />
     <Folder Include="Configurations\" />
   </ItemGroup>
 

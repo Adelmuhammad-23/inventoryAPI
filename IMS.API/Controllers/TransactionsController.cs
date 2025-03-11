@@ -1,12 +1,14 @@
 using IMS.Application.DTOs.TransactionsDTO;
 using IMS.Application.Services;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin,Staff")]
+
     public class TransactionsController : ControllerBase
     {
         private readonly TransactionsServices _transactionsServices;

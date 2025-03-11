@@ -12,6 +12,8 @@ namespace IMS.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin,Manager")]
+
     public class ProductsController : ControllerBase
     {
         private ApplicationDbContext _context;
@@ -30,6 +32,8 @@ namespace IMS.API.Controllers
         )]
         [SwaggerResponse(200, "Get product Details is successfully", typeof(ProductDTO))]
         [SwaggerResponse(404, "Product not found", typeof(string))]
+        [Authorize(Roles = "Admin,Staff")]
+
         public async Task<IActionResult> GetProductList()
         {
             var products = await _productServices.GetProductListAsync();

@@ -1,11 +1,13 @@
 ﻿using IMS.Application.DTOs.CategoryDTOs;
 using IMS.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class CategoryController : ControllerBase
     {
         private readonly CategoryServices _categoryServices;
