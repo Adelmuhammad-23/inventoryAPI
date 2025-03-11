@@ -37,6 +37,7 @@ namespace IMS.Application.Services
 
             var categoriesMapping = _mapper.Map<GetCategoryByIdDTO>(categories);
 
+
             return categoriesMapping;
 
         }
@@ -83,6 +84,7 @@ namespace IMS.Application.Services
             await _unitOfWork.Complete();
 
 
+
             return addCategory;
 
         }
@@ -96,6 +98,7 @@ namespace IMS.Application.Services
 
             var categories = await _unitOfWork.CategoryUOF.UpdatAsync(categoriesMapping);
             await _unitOfWork.Complete();
+
 
 
             return "Update category is successfully";
